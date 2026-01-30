@@ -23,16 +23,18 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "paths": {
-      "@RenderFunctions": ["RenderFunctions"],
-      "@Components": ["Components"],
-      "@Constants": ["Constants"],
-      "@Pages": ["Pages"],
-      "@Utils": ["Utils"],
-      "@Store": ["Store"],
-      "@Types": ["Types"],
-      "@Game": ["GameEngine"],
-      "@Hooks": ["Hooks"],
-      "@ServiceWorker": ["ServiceWorker"]
+      "@/Components/*": ["Components/*"],
+      "@/Hooks/*": ["Hooks/*"],
+      "@/Types/*": ["Types/*"],
+      "@/Utils/*": ["Utils/*"],
+      "@/Styles/*": ["Styles/*"],
+      "@/UI/*": ["UI/*"],
+      "@/Widgets/*": ["Widgets/*"],
+      "@/Store/*": ["Store/*"],
+      "@/Layers/*": ["Layers/*"],
+      "@/Constants/*": ["Constants/*"],
+      "@/ServiceWorker/*": ["ServiceWorker/*"],
+      "@/*": ["./*"]
     }
   },
   "include": ["src"]

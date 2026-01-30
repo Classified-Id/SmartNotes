@@ -1,1 +1,1 @@
-export { UseTest } from './useTest';
+export { useIndexedDB } from './UseIndexedDB.tsx';
