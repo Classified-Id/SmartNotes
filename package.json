@@ -1,0 +1,55 @@
+{
+  "name": "aob",
+  "private": true,
+  "version": "0.0.1",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "lerna run build",
+    "dev:client": "lerna run dev --scope=frontend",
+    "dev:server": "lerna run dev --scope=server",
+    "dev": "lerna run dev",
+    "test": "lerna run test",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx && lerna run lint",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix && lerna run lint:fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,html,css}\" && lerna run format",
+    "check-format": "prettier --check \"**/*.{ts,tsx,js,jsx,json,html,css}\" && lerna run check-format",
+    "preview": "lerna run preview --scope=frontend",
+    "docker:start": "docker-compose up -d",
+    "docker:stop": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:rebuild": "docker-compose up -d --build",
+    "docker:clean": "docker system prune -f && docker volume prune -f"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "systeminformation": "^5.25.11"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "concurrently": "^9.1.2",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.0.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "lerna": "^8.2.0",
+    "prettier": "^3.5.2",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.19.3",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.24.1"
+  },
+  "main": "main.tsx",
+  "license": "MIT"
+}
