@@ -3,11 +3,12 @@ import './App.css';
 import { useEffect, useState } from 'react';
 
 import { CreateNoteButton, NoteList } from '@/Components';
-import { NoteEditor } from '@/Widgets';
+import { NoteEditor, BackupManager } from '@/Widgets';
 
 import { useIndexedDB } from '@/Hooks';
 
 import type { INote } from '@/Types/Note.ts';
+
 import './App.css';
 
 function App() {
@@ -131,6 +132,7 @@ function App() {
         <h1>📝 Smart Notes</h1>
         <div className='app-controls'>
           <CreateNoteButton onCreate={handleCreateNote} />
+          <BackupManager />
         </div>
       </header>
 
