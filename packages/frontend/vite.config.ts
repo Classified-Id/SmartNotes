@@ -5,6 +5,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [react()],
   server: {
+    port: parseInt(process.env.VITE_PORT || '5173'),
     proxy: {
       '/api': {
         target: 'http://localhost:3000', // Адрес вашего Express-сервера

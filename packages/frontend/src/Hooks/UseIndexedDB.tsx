@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { INote, NewNote } from '../Types/Note.ts';
 
-const DB_NAME = 'SmartNotesDB';
 const DB_VERSION = 1;
 const STORE_NAME = 'notes';
+const DB_NAME = import.meta.env.VITE_DB_NAME;
 
 export const useIndexedDB = () => {
   const [db, setDb] = useState<IDBDatabase | null>(null);
