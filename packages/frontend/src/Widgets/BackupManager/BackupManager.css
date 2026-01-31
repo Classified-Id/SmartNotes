@@ -12,12 +12,11 @@
   color: #333;
   font-size: 14px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 .backup-actions {
   display: flex;
-  flex-direction: column;
   gap: 8px;
 }
 

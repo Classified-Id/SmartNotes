@@ -1,11 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { useNotesExport } from '@/Hooks';
 
 import './BackupManager.css';
 
 export const BackupManager: React.FC = () => {
-  const { exportToJSON, importFromJSON, exportToText, clearAllNotes } = useNotesExport();
+  const { exportToJSON, importFromJSON, clearAllNotes } =
+    useNotesExport();
   const [isImporting, setIsImporting] = useState(false);
   const [importResult, setImportResult] = useState<{
     success: boolean;
@@ -24,20 +25,13 @@ export const BackupManager: React.FC = () => {
     }
   };
 
-  const handleExportText = async () => {
-    const result = await exportToText();
-    if (result.success) {
-      alert(`Экспортировано ${result.count} заметок в текстовый формат`);
-    } else {
-      alert('Ошибка экспорта');
-    }
-  };
-
   const handleImportClick = () => {
     fileInputRef.current?.click();
   };
 
-  const handleFileSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelect = async (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
@@ -78,41 +72,36 @@ export const BackupManager: React.FC = () => {
   };
 
   return (
-    <div className="backup-manager">
+    <div className='backup-manager'>
       <h3>Резервное копирование</h3>
 
-      <div className="backup-actions">
-        <button onClick={handleExportJSON} className="btn btn-primary">
-          📥 Экспорт в JSON
-        </button>
-
-        <button onClick={handleExportText} className="btn btn-secondary">
-          📝 Экспорт в текст
+      <div className='backup-actions'>
+        <button onClick={handleExportJSON} className='btn btn-primary'>
+          📥 Экспорт
         </button>
 
         <button
           onClick={handleImportClick}
-          className="btn btn-success"
-          disabled={isImporting}
-        >
-          {isImporting ? 'Импорт...' : '📤 Импорт из JSON'}
+          className='btn btn-success'
+          disabled={isImporting}>
+          {isImporting ? 'Импорт...' : '📤 Импорт'}
         </button>
 
         <input
-          type="file"
+          type='file'
           ref={fileInputRef}
           onChange={handleFileSelect}
-          accept=".json,application/json"
+          accept='.json,application/json'
           style={{ display: 'none' }}
         />
 
-        <button onClick={handleClearAll} className="btn btn-danger">
-          🗑️ Очистить все
+        <button onClick={handleClearAll} className='btn btn-danger'>
+          🗑️ Очистить
         </button>
       </div>
 
       {importResult && importResult.errors.length > 0 && (
-        <div className="import-errors">
+        <div className='import-errors'>
           <h4>Ошибки при импорте:</h4>
           <ul>
             {importResult.errors.slice(0, 5).map((error, index) => (
@@ -125,10 +114,16 @@ export const BackupManager: React.FC = () => {
         </div>
       )}
 
-      <div className="backup-info">
-        <p><small>• JSON файл можно редактировать вручную</small></p>
-        <p><small>• Все данные хранятся только в вашем браузере</small></p>
-        <p><small>• Регулярно делайте бэкапы!</small></p>
+      <div className='backup-info'>
+        <p>
+          <small>• JSON файл можно редактировать вручную</small>
+        </p>
+        <p>
+          <small>• Все данные хранятся только в вашем браузере</small>
+        </p>
+        <p>
+          <small>• Регулярно делайте бэкапы!</small>
+        </p>
       </div>
     </div>
   );

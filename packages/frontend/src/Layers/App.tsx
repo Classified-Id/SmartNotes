@@ -3,7 +3,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 
 import { CreateNoteButton, NoteList } from '@/Components';
-import { NoteEditor, BackupManager } from '@/Widgets';
+import { BackupManager, NoteEditor } from '@/Widgets';
 
 import { useIndexedDB } from '@/Hooks';
 

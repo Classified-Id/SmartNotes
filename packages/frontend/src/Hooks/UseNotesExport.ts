@@ -110,39 +110,6 @@ export const useNotesExport = () => {
     [addNote],
   );
 
-  /** Экспорт в форматированный текст */
-  const exportToText = useCallback(async () => {
-    try {
-      const notes = await getAllNotes();
-
-      let textContent = `# Smart Notes Backup\n`;
-      textContent += `Generated: ${new Date().toLocaleString()}\n`;
-      textContent += `Total notes: ${notes.length}\n\n`;
-
-      notes.forEach((note, index) => {
-        textContent += `## ${index + 1}. ${note.title}\n`;
-        textContent += `Created: ${new Date(note.createdAt).toLocaleString()}\n`;
-        textContent += `Updated: ${new Date(note.updatedAt).toLocaleString()}\n`;
-        textContent += `---\n${note.content}\n\n`;
-      });
-
-      const blob = new Blob([textContent], { type: 'text/plain' });
-      const url = URL.createObjectURL(blob);
-
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `smart-notes-${new Date().toISOString().split('T')[0]}.txt`;
-      link.click();
-
-      URL.revokeObjectURL(url);
-
-      return { success: true, count: notes.length };
-    } catch (error) {
-      console.error('Text export error:', error);
-      return { success: false, error };
-    }
-  }, [getAllNotes]);
-
   /** Очистить все заметки */
   const clearAllNotes = useCallback(async () => {
     try {
@@ -159,7 +126,6 @@ export const useNotesExport = () => {
   return {
     exportToJSON,
     importFromJSON,
-    exportToText,
     clearAllNotes,
   };
 };

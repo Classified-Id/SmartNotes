@@ -1,4 +1,4 @@
-import { INote } from '../../Types/Note.ts';
+import { INote } from '@/Types/Note.ts';
 
 export interface NoteEditorProps {
   note: INote | null;
